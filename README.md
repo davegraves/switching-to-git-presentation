@@ -1,0 +1,1 @@
+This is a basic introduction to Git: how it works and how to use it.
