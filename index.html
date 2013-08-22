@@ -127,11 +127,20 @@
           <p><code>git add file.txt</code></p>
         </section>
         <section>
+          <p>If Bob ever decides he wants to scrap his changes in his <code>working</code> folder and use what he already added to <code>staging</code>, that is quite easy.</p>
+          <p>He can also revert back to a specific snapshot, either his entire project or specific files.</p>
+          <ul>
+            <li><code>git checkout -- hello.js</code></li>
+            <li><code>git checkout HEAD hello.js</code></li>
+            <li><code>git reset HEAD</code></li>
+          </ul>
+        </section>
+        <section>
           <p>Finally, Bob says his code is "good enough" to call <code>v1.0.0</code>, so he writes a note that <code>snapshot-25</code> is the same as the tag <code>v1.0.0</code>, zips it up, and sends it to clients.</p>
-          <p>
-            <code>git tag 'v1.0.0'</code><br />
-            <code>git archive --format zip --output 'Simulation-v1.0.0.zip'</code>
-          </p>
+          <ul>
+            <li><code>git tag 'v1.0.0'</code></li>
+            <li><code>git archive --format zip --output 'Simulation-v1.0.0.zip'</code></li>
+          </ul>
         </section>
         <section>
           <p>Bob, preparing for new features continues to make new snapshots, all the way up to <code>snapshot-40</code> when one of his clients informs him of a pressing issue in <code>v1.0.0</code>.</p>
@@ -148,19 +157,21 @@
         <section>
           <p>This new branching system works great until Bob realizes that he wants to merge code from one branch his <code>black-death</code> branch into his <code>master</code> branch.</p>
           <p class="fragment">He can trace back where the two paths diverged, but they each have a few new snapshots and Bob has to go through each difference to see how best to merge each change and get a working result.</p>
-          <p>
-            <code>git checkout master</code><br />
-            <code>git merge renaissance</code><br />
-            <code>git commit -am "Merged in renaissance branch"</code></a>
-          </p>
+          <img class="fragment" src="images/merge.png" />
+          <ul>
+            <li><code>git checkout master</code></li>
+            <li><code>git merge renaissance</code></li>
+            <li><code>git commit -am "Merged in renaissance branch"</code></li>
+          </ul>
         </section>
         <section>
           <p>Bob thinks his new branching system is great, but wished that the history didn't look so ugly and that his changes should be layered on top of <code>master</code> instead of awkwardly being merged in</p>
           <p class="fragment">Bob then reworks his branch's history to instead appear to be derived from <code>master</code> rather than some random commit in the middle of nowhere</p>
-          <p>
-            <code>git checkout industrial-revolution</code><br />
-            <code>git rebase master</code>
-          </p>
+          <img class="fragment" src="images/rebase.png" />
+          <ul>
+            <li><code>git checkout industrial-revolution</code></li>
+            <li><code>git rebase master</code></li>
+          </ul>
         </section>
         <section>
           <p>Bob has been having a great time working on his own, but he needs some help on his project.</p>
@@ -179,6 +190,17 @@
             <li class="fragment">Forks are encouraged and cultivated, and are the default way to contribute to a Git project.</li>
             <li class="fragment">Extremely fast, even for large repositories</li>
             <li class="fragment">Pull requests preferred over branches, allowing for easier peer review, richer history, and less technological impedence.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Cool things in Git</h2>
+          <ul>
+            <li class="fragment"><code>git bisect</code> <aside class="notes">Allows you to choose an initial "good" and and initial 'bad' commit, selects the middle, asks if it is good or bad. If good, then Git knows it's in the second half. If bad, then Git knows it's in the first half. The process continues until the first bad commit is found. Doing a bisect over 1000 commits only takes 10 steps.</li>
+            <li class="fragment"><code>git grep</code> <aside class="notes">Allows you to search any arbitrary commit for a specific pattern, with all the full-featured functionality one would expect of standard <code>grep</code></li>
+            <li class="fragment"><code>git stash</code> <aside class="notes">Allows you to take all your staged changes and stash them for later reuse without making a commit. This is handy if you're half done with something, need to work on something else, but don't want to commit or lose your changes.</li>
+            <li class="fragment">Two-way bridges to most other version control systems <aside class="notes">This allows you to check out a non-git (e.g. SVN, TFS, Hg) repository as if it were git, work locally in git, and pushes turn back into non-git commits/pushes.</aside></li>
+            <li class="fragment">Can be used as an alternative to TFVC in TFS</li>
+            <li class="fragment">Easy scriptability <aside class="notes">e.g. You can set up a post-push script that kicks off deployment or runs a test suite.</aside></li>
           </ul>
         </section>
         <section>

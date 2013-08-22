@@ -24,6 +24,7 @@ io.sockets.on('connection', function(socket) {
 });
 
 app.configure(function() {
+	app.use(express.favicon(opts.baseDir + '/favicon.ico'));
 	[ 'css', 'js', 'images', 'plugin', 'lib' ].forEach(function(dir) {
 		app.use('/' + dir, staticDir(opts.baseDir + dir));
 	});
