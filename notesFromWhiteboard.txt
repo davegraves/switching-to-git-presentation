@@ -1,0 +1,23 @@
+Dave
+rationale
+tools
+git for windows
+posh-git
+beyond compare
+
+Cam
+branching diagram
+workflows
+-hotfixes
+-feature branches
+-switching branches
+-git-flow picture
+
+angular commit diagrams
+
+Dave
+List of steps
+who to talk to when things go wrong
+
+questions?
+

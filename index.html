@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Introduction to Git</title>
+    <title>Switching to git</title>
     <meta name="description" content="A quick tutorial on how git works and how to use it">
     <meta name="author" content="Cameron Kenneth Knight">
 
@@ -31,198 +31,67 @@
     <div class="reveal">
       <div class="slides">
         <section>
-          <h1>Introduction to Git</h1>
-          <p>by <a href="https://github.com/ckknight">ckknight</a></p>
-          <p><a href="http://http://ckknight.github.io/introduction-to-git-presentation/">http://ckknight.github.io/introduction-to-git-presentation/</a></p>
-          <img src="images/Git-Logo.png" style="background: rgba(255, 255, 255, 0.5)" />
+          <h1>Migrating to git</h1>
         </section>
         <section>
-          <h3>Version Control:</h3>
-          <p class="fragment">The management of changes to documents.</p>
-          <p class="fragment">A technical solution to a social problem.</p>
+          <h3>Why are we doing this?</h3>
+          <p class="fragment">TFS is slow.</p>
+		  <p class="fragment">Better support for branching and merging.</p>
         </section>
+		<section>
+          <h3>How to prepare</h3>
+          <p class="fragment">Send me your github credentials.</p>
+		  <p class="fragment">Install a git client.</p>
+        </section>
+		<section>
+          <h3>Recommended tools to install</h3>
+          <p class="fragment"><a href="http://git-scm.com/">git for windows</a></p>
+		  <p class="fragment"><a href="https://github.com/dahlbyk/posh-git">posh-git</a></p>
+		  <p class="fragment"><a href="http://www.scootersoftware.com/">beyond compare</a></p>
+		  <p class="fragment">Visual studio plugin (ask Bryant)</p>
+        </section>
+		
+		
+		
+		
+		
+		
+		
+		
         <section>
-          <h3>Centralized</h3>
+          <h3>How will the old TFS branches map to git</h3>
+			<p class="fragment">??</p>
+        </section>
+		
+		<section>
+          <h3>Workflows</h3>
+		  <ul>
+			  <li class="fragment">hotfix</li>
+			  <li class="fragment">feature branch</li>
+			  <li class="fragment">switching branches</li>
+		  </ul>
+        </section>
+		
+        <section>
+          <h3>Conventions</h3>
           <ul>
-            <li class="fragment">e.g. CVS, SVN, VSS, TFS, Perforce</li>
-            <li class="fragment">One server acts as master. <aside class="notes">That server holds the whole history. Clients usually check out only the latest snapshot.</aside></li>
-            <li class="fragment">Locking of files. <aside class="notes">Clients usually have the ability to "lock" a file, so that others are prevented from editing it until they are complete. This used to be more typical before merge tools came into fruition.</aside></li>
-            <li class="fragment">Sequential revision numbers (i.e. 1, 2, 3, ...)</li>
-            <li class="fragment">Tight access control</li>
-            <li class="fragment">Complex merging</li>
+            <li class="fragment"> angular<li>
           </ul>
         </section>
-        <section>
-          <h3>Distributed</h3>
+		
+		<section>
+          <h3>List of steps</h3>
           <ul>
-            <li class="fragment">e.g. Git, Hg, Bazaar, BitKeeper</li>
+            <li class="fragment"><li>
           </ul>
         </section>
-        <section>
-          <h3>Custom topology</h3>
-          <p>No technical requirement for one server to be master.</p>
-          <p class="fragment">Repository can shape to your organization, rather than the other way around.</p>
-          <ul>
-            <li class="fragment">Centralized: contributors submit pull requests to mainline owner.</li>
-            <li class="fragment">Heirarchal: A single team pushes to their own repository, mainline owner pulls from each team's repository as-needed.</li>
-            <li class="fragment">Distributed: Your repository is not special. It is not a beautiful or unique snowflake. It's the same decaying electronic bits as everything else.</li>
-          </ul>
+		
+		<section>
+          <h3>WHo to talk to when things go south</h3>
+			<p class="fragment">Dave, Cam</p>
         </section>
-        <section>
-          <h3>Backups</h3>
-          <p>Backups are inherent.</p>
-          <p>There is no single point of failure where if your server catches on fire, you lose all of your history.</p>
-          <p>Everyone who cloned your repository is acting as a backup.</p>
-        </section>
-        <section>
-          <h3>Branching and merging</h3>
-          <p>If branching/merging is too painful, we will avoid it - which easily leads to problems.</p>
-          <p class="fragment">Because Git provides such seamless branching and merging, working with either local or remote branches is painless, allowing for easy feature branches.</p>
-          <p class="fragment">Pulling specific fixes into a separate branch doesn't make merging back any harder.</p>
-        </section>
-        <section>
-          <h3>Full local history</h3>
-          <ul>
-            <li>Browse full history without any network delay</li>
-            <li class="fragment">Easy to compute repository statistics locally.</li>
-            <li class="fragment">Promotes a culture of new tools and third-party features.</li>
-          </ul>
-        </section>
-        <section>
-          <h3>About Git</h3>
-
-          <p>Started by Linus Torvalds in 2005 as a response to BitKeeper removing the Linux team's free licenses.</p>
-          <p class="fragment">Works on most operating systems (Windows, Linux, OS X).</p>
-          <p class="fragment">Design goals:</p>
-          <ul>
-            <li class="fragment">Scales well for large projects (e.g. Linux)</li>
-            <li class="fragment">Distributed by nature</li>
-            <li class="fragment">Strong branch/merge capabilities</li>
-            <li class="fragment">Speed</li>
-            <li class="fragment">Data integrity</li>
-          </ul>
-        </section>
-        <section>
-          <h2>How Git works:</h3>
-        </section>
-        <section>
-          <p>Bob is given a new project, and being a smart developer he wants to keep track of the changes he's done.</p>
-
-          <p><code>git init</code></p>
-        </section>
-        <section>
-          <p>So Bob starts his project and whenever he reaches a point where he wants to take a snapshot of his current code, he copies his <code>working</code> folder into another one named <code>snapshot-1</code>, then <code>snapshot-2</code> and so on.
-
-          <p><code>git commit</code></p>
-
-          <aside class="notes">Actually, git add is necessary, but I haven't separated working/staging yet.</aside>
-        </section>
-        <section>
-          <p>To make it easier on himself, Bob decided it was a good idea to keep notes on what changed between each snapshot, so he creates a <code>message</code> file for each <code>snapshot-#</code> folder.</p>
-
-          <p><code>git commit -m "Added humans to simulation. Fixes #42"</code></p>
-        </section>
-        <section>
-          <p>After a bit, Bob realizes that sometimes he doesn't want to copy his entire <code>working</code> folder into a new snapshot, but instead pick and choose which file.</p>
-          <p>To do this, he creates another folder, <code>staging</code>, which he mirrors changes from <code>working</code> into and then copies <code>staging</code> instead of <code>working</code> to <code>snapshot-#</code>.
-          <p><code>git add file.txt</code></p>
-        </section>
-        <section>
-          <p>If Bob ever decides he wants to scrap his changes in his <code>working</code> folder and use what he already added to <code>staging</code>, that is quite easy.</p>
-          <p>He can also revert back to a specific snapshot, either his entire project or specific files.</p>
-          <ul>
-            <li><code>git checkout -- hello.js</code></li>
-            <li><code>git checkout HEAD hello.js</code></li>
-            <li><code>git reset HEAD</code></li>
-          </ul>
-        </section>
-        <section>
-          <p>Finally, Bob says his code is "good enough" to call <code>v1.0.0</code>, so he writes a note that <code>snapshot-25</code> is the same as the tag <code>v1.0.0</code>, zips it up, and sends it to clients.</p>
-          <ul>
-            <li><code>git tag 'v1.0.0'</code></li>
-            <li><code>git archive --format zip --output 'Simulation-v1.0.0.zip'</code></li>
-          </ul>
-        </section>
-        <section>
-          <p>Bob, preparing for new features continues to make new snapshots, all the way up to <code>snapshot-40</code> when one of his clients informs him of a pressing issue in <code>v1.0.0</code>.</p>
-          <p class="fragment">Bob isn't ready to release all the new features of <code>snapshot-40</code>, so he needs to fix the bug specifically in <code>v1.0.0</code>.</p>
-          <p class="fragment">He copies <code>tags/v1.0.0</code> onto his <code>working</code> folder, makes some changes and then commits it as <code>snapshot-41</code>, which just feels wrong because it doesn't derive from <code>snapshot-40</code> like every other snapshot.</p>
-          <p><code>git checkout v1.0.0</code></p>
-        </section>
-        <section>
-          <p>Bob also soon realizes that dealing with these two separate codepaths and having only one <code>working</code> folder doesn't work if he wants to switch between different features.</p>
-          <p class="fragment">Bob decides to come up with "branches", where each branch points to a specific revision node very similarly to tags, but the branch pointer updates with each commit rather than staying constant.</p>
-          <p class="fragment">The <code>v1.0.0</code> fixes would then be on a different branch until merged back into the <code>master</code> branch.</p>
-          <p><code>git checkout -b "black-death"</code></p>
-        </section>
-        <section>
-          <p>This new branching system works great until Bob realizes that he wants to merge code from one branch his <code>black-death</code> branch into his <code>master</code> branch.</p>
-          <p class="fragment">He can trace back where the two paths diverged, but they each have a few new snapshots and Bob has to go through each difference to see how best to merge each change and get a working result.</p>
-          <img class="fragment" src="images/merge.png" />
-          <ul>
-            <li><code>git checkout master</code></li>
-            <li><code>git merge renaissance</code></li>
-            <li><code>git commit -am "Merged in renaissance branch"</code></li>
-          </ul>
-        </section>
-        <section>
-          <p>Bob thinks his new branching system is great, but wished that the history didn't look so ugly and that his changes should be layered on top of <code>master</code> instead of awkwardly being merged in</p>
-          <p class="fragment">Bob then reworks his branch's history to instead appear to be derived from <code>master</code> rather than some random commit in the middle of nowhere</p>
-          <img class="fragment" src="images/rebase.png" />
-          <ul>
-            <li><code>git checkout industrial-revolution</code></li>
-            <li><code>git rebase master</code></li>
-          </ul>
-        </section>
-        <section>
-          <p>Bob has been having a great time working on his own, but he needs some help on his project.</p>
-          <p class="fragment">Alice joins the team, gets a copy of the repository, and makes her own snapshots. They also decide to start tracking who the author of each commit is along with the change message.</p>
-          <p class="fragment">Alice and Bob realize that they now have snapshots with the same names. Alice's <code>snapshot-53</code> looks nothing like Bob's and trying to merge them together easily turns into a nightmare.</p>
-          <p class="fragment">As a solution, Bob instead decides to name his snapshots based on their SHA hash and keep track of parents through a special file inside each commit. So now he has <code>846fb43a</code>, Alice has <code>36a35ed4</code>, and everyone wins.</p>
-        </section>
-        <section>
-          <h2>Advantages of Git</h2>
-          <ul>
-            <li>Commit vs. Push</li>
-            <li class="fragment">Local branches</li>
-            <li class="fragment">Easy merging</li>
-            <li class="fragment">Custom topology</li>
-            <li class="fragment">Changeset tracking (Mozilla project is 30x larger in SVN than Git)</li>
-            <li class="fragment">Forks are encouraged and cultivated, and are the default way to contribute to a Git project.</li>
-            <li class="fragment">Extremely fast, even for large repositories</li>
-            <li class="fragment">Pull requests preferred over remote branches, allowing for easier peer review, richer history, and less technological impedence.</li>
-          </ul>
-        </section>
-        <section>
-          <h2>Cool things in Git</h2>
-          <ul>
-            <li class="fragment"><code>git bisect</code> <aside class="notes">Allows you to choose an initial "good" and and initial 'bad' commit, selects the middle, asks if it is good or bad. If good, then Git knows it's in the second half. If bad, then Git knows it's in the first half. The process continues until the first bad commit is found. Doing a bisect over 1000 commits only takes 10 steps.</li>
-            <li class="fragment"><code>git grep</code> <aside class="notes">Allows you to search any arbitrary commit for a specific pattern, with all the full-featured functionality one would expect of standard <code>grep</code></li>
-            <li class="fragment"><code>git stash</code> <aside class="notes">Allows you to take all your staged changes and stash them for later reuse without making a commit. This is handy if you're half done with something, need to work on something else, but don't want to commit or lose your changes.</li>
-            <li class="fragment">Two-way bridges to most other version control systems <aside class="notes">This allows you to check out a non-git (e.g. SVN, TFS, Hg) repository as if it were git, work locally in git, and pushes turn back into non-git commits/pushes.</aside></li>
-            <li class="fragment">Can be used as an alternative to TFVC in TFS</li>
-            <li class="fragment">Easy scriptability <aside class="notes">e.g. You can set up a post-push script that kicks off deployment or runs a test suite.</aside></li>
-          </ul>
-        </section>
-        <section>
-          <h2>Live Example</h2>
-          <aside class="notes">
-            <ol>
-              <li><code>git init</code> or <code>git clone</code></li>
-              <li>Do some work, add a README</li>
-              <li><code>git add</code> to move from working to staging</li>
-              <li><code>git commit</code> to create a commit</li>
-              <li>Do some more work</li>
-              <li><code>git commit -a</code></li>
-              <li><code>git checkout -b BRANCHNAME</code></li>
-              <li>Do some more work, <code>git commit -a</code> (on BRANCHNAME)</li>
-              <li><code>git checkout master</code></li>
-              <li>Do some more work, <code>git commit -a</code> (on master)</li>
-              <li><code>git merge BRANCHNAME</code></li>
-              <li><code>git commit -a</code></li>
-            </ol>
-          </aside>
-        </section>
+		
+		
         <section>
           <h2>Q &amp; A</h2>
         </section>
